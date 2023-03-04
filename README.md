@@ -1,7 +1,7 @@
+Exam-Application
 For easier understanding I have added a video of how things will work in this project.
 
-You will need to go to the iCoder directory  and then use command python manage.py runserver and then follow the 
-link http://127.0.0.1:8000/
+You will need to go to the iCoder directory and then use command python manage.py runserver and then follow the link http://127.0.0.1:8000/
 
 Only the user knowing username and password can access the Django administration Database.(ex- teachers)
 
@@ -17,6 +17,4 @@ Only after successful login students can give the exam.
 
 Also we have a feature of logout in here.
 
-Django Adminstrator details:
-Username: Sahil
-Password: Sahil123456@
+Django Adminstrator details: Username: Sahil Password: Sahil123456@
