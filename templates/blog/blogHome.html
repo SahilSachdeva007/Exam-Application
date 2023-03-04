@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %} BlogHome {% endblock title %}
+{%block blogactive %} active {% endblock blogactive %} {% block body %}
+<div class="container my-3">
+  <h2>MCQ Questions</h2>
+  {% for post in allPosts %}
+  <div
+    class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative"
+  >
+    <div class="col p-4 d-flex flex-column position-static">
+
+      <h3 class="mb-0">{{post.title}}</h3>
+
+      <p class="card-text mb-auto">{{post.content| truncatechars:500}}</p>
+      <form action="" method="post">
+    
+
+        <input type="checkbox" name="chk[]" value="" />  {{post.option1}}
+        <br /><br />
+        <input type="checkbox" name="chk[]" value="" />  {{post.option2}} <br /><br />
+        <input type="checkbox" name="chk[]" value="" />  {{post.option3}} <br /><br />
+        <input type="checkbox" name="chk[]" value="" />  {{post.option4}} <br /><br />
+    
+      </form>
+      <div class="my-2">
+        {% if user.is_authenticated %}
+        <form action="/blog/postComment" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Type Your Answer </label>
+                <input type="text" class="form-control" name="comment" placeholder="" required>
+            </div>
+            <input type="hidden" name="postSno" value="{{post.sno}}">
+            <input type="hidden" name="parentSno" value="">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% else %}
+        Please login to take the exam.
+        {% endif %}
+    </div>
+  
+    </div>
+
+  </div>
+
+  {% endfor %}
+</div>
+{% endblock %}
